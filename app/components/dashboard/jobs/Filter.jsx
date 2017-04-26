@@ -10,6 +10,15 @@ const Filter = createClass({
     applicationStatus: PropTypes.string.isRequired
   },
 
+  onFilter(event) {
+    this.props.updateFilter({
+      text: this.props.filterText + event.key,
+      isFilterActive: true
+    });
+    console.log('filter text is ', this.props.filterText);
+    console.log('this is the event key', event.key);
+  },
+
   render() {
     const {
       applicationStatus,
@@ -20,11 +29,8 @@ const Filter = createClass({
       <div>
         <input
           className='filter-field'
-          ref={filterText => {
-            this.filterText = filterText
-          }}
           placeholder={'Filter'}
-          onKeyUp={this.onFilter}
+          onKeyPress={this.onFilter}
         />
       </div>
     );
