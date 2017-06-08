@@ -5,12 +5,13 @@ const Filter = createClass({
   displayName: 'Filter',
 
   onFilter(event) {
-    this.props.updateFilter({
-      text: this.props.filterText + event.key,
-      isFilterActive: true
-    });
+    console.log('before updateFilter');
     console.log('filter text is ', this.props.filterText);
     console.log('this is the event key', event.key);
+    this.props.updateFilter({
+      filterText: this.props.filterText + event.key,
+      isFilterActive: true
+    });
   },
 
   render() {
