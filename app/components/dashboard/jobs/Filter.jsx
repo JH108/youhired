@@ -4,12 +4,6 @@ import React, { createClass, PropTypes } from 'react';
 const Filter = createClass({
   displayName: 'Filter',
 
-  propTypes: {
-    applicationName: PropTypes.string.isRequired,
-    applicationDate: PropTypes.string.isRequired,
-    applicationStatus: PropTypes.string.isRequired
-  },
-
   onFilter(event) {
     this.props.updateFilter({
       text: this.props.filterText + event.key,

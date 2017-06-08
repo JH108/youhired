@@ -81,7 +81,8 @@ const Dashboard = createClass({
                     hideModal={hideModal}
                     selectJob={selectJob}
                     filterText={filterText}
-                    updateFilter={updateFilter} />
+                    updateFilter={updateFilter}
+                    />
                 </div>
               </div>
               <div className="root-main-tasks">
@@ -125,7 +126,7 @@ const mapStateToProps = (state) => {
       isAuthenticated: state.authentication.isAuthenticated,
       isModalActive: state.modal.modalType,
       goals: state.dashboard.goals.goalTracking,
-      filterText: state.filters.filterText
+      filterText: state.filter.filterText
   };
 };
 
