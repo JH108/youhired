@@ -8,10 +8,17 @@ const Filter = createClass({
     console.log('before updateFilter');
     console.log('filter text is ', this.props.filterText);
     console.log('this is the event key', event.key);
-    this.props.updateFilter({
-      filterText: this.props.filterText + event.key,
-      isFilterActive: true
-    });
+    if (event.key === 'Backspace') {
+      this.props.updateFilter({
+        filterText: this.props.filterText.slice(0, -1),
+        isFilterActive: true
+      });
+    } else if (event.key.length === 1) {
+      this.props.updateFilter({
+        filterText: this.props.filterText + event.key,
+        isFilterActive: true
+      });
+    }
   },
 
   render() {
@@ -24,7 +31,7 @@ const Filter = createClass({
         <input
           className='filter-field'
           placeholder={'Search'}
-          onKeyPress={this.onFilter}
+          onKeyDown={this.onFilter}
         />
     );
   }

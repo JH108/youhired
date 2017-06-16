@@ -62,7 +62,8 @@ const Dashboard = createClass({
       progressVsAverage,
       isModalActive,
       filterText,
-      updateFilter
+      updateFilter,
+      isFilterActive
     } = this.props;
     return (
       <div className="root-view">
@@ -93,6 +94,7 @@ const Dashboard = createClass({
                     hideModal={hideModal}
                     selectJob={selectJob}
                     filterText={filterText}
+                    isFilterActive={isFilterActive}
                     updateFilter={updateFilter}
                     />
                 </div>
@@ -153,7 +155,8 @@ const mapStateToProps = (state) => {
       goals: state.dashboard.goals.goalTracking,
       progressVsAverage: state.chart.progressVsAverage,
       currentStatuses: state.chart.currentStatuses,
-      filterText: state.filter.filterText
+      filterText: state.filter.filterText,
+      isFilterActive: state.filter.isFilterActive
   };
 };
 

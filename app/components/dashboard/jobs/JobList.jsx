@@ -34,8 +34,24 @@ const JobList = createClass({
       activeComponent,
       jobs,
       filterText,
-      updateFilter
+      updateFilter,
+      isFilterActive
     } = this.props;
+    let filteredJobs = JSON.parse(JSON.stringify(jobs));
+    if (isFilterActive) {
+      filteredJobs = jobs.filter((job) => {
+        if (job.details.companyname.indexOf(filterText) !== -1) {
+          return true;
+        }
+        if (job.details.status.indexOf(filterText) !== -1) {
+          return true;
+        }
+        if (job.details.createdat.indexOf(filterText) !== -1) {
+          return true;
+        }
+        return false;
+      });
+    }
 
     let order = ['OFFER', 'INTERVIEW', 'INFO INTERVIEW', 'APPLIED', 'INTERESTED'];
 
@@ -45,7 +61,7 @@ const JobList = createClass({
           speed={0.8}
           className='job-list-scroll'
           horizontal={false}>
-          {jobs.sort((a, b) => {
+          {filteredJobs.sort((a, b) => {
               return order.indexOf(a.details.status) - order.indexOf(b.details.status);
             }).map((job, index) =>
             <JobCard
