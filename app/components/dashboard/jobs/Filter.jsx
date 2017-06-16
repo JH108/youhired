@@ -5,9 +5,6 @@ const Filter = createClass({
   displayName: 'Filter',
 
   onFilter(event) {
-    console.log('before updateFilter');
-    console.log('filter text is ', this.props.filterText);
-    console.log('this is the event key', event.key);
     if (event.key === 'Backspace') {
       this.props.updateFilter({
         filterText: this.props.filterText.slice(0, -1),

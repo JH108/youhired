@@ -6,7 +6,6 @@ const defaultState = {
 };
 
 const filterReducer = (state = defaultState, { type, payload }) => {
-  console.log('in filter reducer');
   switch (type) {
     case UPDATE_FILTER:
       return {
