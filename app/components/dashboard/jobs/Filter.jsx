@@ -21,13 +21,11 @@ const Filter = createClass({
       applicationName
     } = this.props;
     return (
-      <div>
         <input
           className='filter-field'
-          placeholder={'Filter'}
+          placeholder={'Search'}
           onKeyPress={this.onFilter}
         />
-      </div>
     );
   }
 });
