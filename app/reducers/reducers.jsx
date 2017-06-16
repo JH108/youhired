@@ -3,6 +3,7 @@ import jobInformation from './jobInformationReducers';
 import authentication from './authenticationReducers';
 import navigation from './navigationReducers';
 import modal from './modalReducers';
+import filter from './filterReducer';
 import datePicker from './datePickerReducer';
 import chart from './chartReducers';
 import { LOGOUT } from '../actions/NavigationActionTypes';
@@ -15,6 +16,7 @@ const appReducer = combineReducers({
   authentication,
   navigation,
   chart,
+  filter,
   modal
 });
 

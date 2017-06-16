@@ -1,6 +1,7 @@
 import React, { createClass, PropTypes } from 'react';
 import JobCard from './JobCard';
 import AddJob from './AddJob';
+import Filter from './Filter';
 import ScrollArea from 'react-scrollbar';
 
 const JobList = createClass({
@@ -31,7 +32,9 @@ const JobList = createClass({
       selectJob,
       changePage,
       activeComponent,
-      jobs
+      jobs,
+      filterText,
+      updateFilter
     } = this.props;
 
     let order = ['OFFER', 'INTERVIEW', 'INFO INTERVIEW', 'APPLIED', 'INTERESTED'];
@@ -57,6 +60,10 @@ const JobList = createClass({
           )}
         </ScrollArea>
 
+        <Filter
+          filterText={filterText}
+          updateFilter={updateFilter}
+        />
         <button className='button job-list-button' onClick={this.onAddJob}>
           Add Job
         </button>

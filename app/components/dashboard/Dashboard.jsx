@@ -13,6 +13,7 @@ import HeaderComponent from 'Header';
 import FooterComponent from 'Footer';
 import { displayJobForm, displayGoalForm, hideModal } from '../../actions/modals/ModalActions';
 import { selectJob } from '../../actions/dashboard/DashboardActions';
+import { updateFilter } from '../../actions/filters/FilterActions';
 import RootModal from '../RootModal';
 
 const Dashboard = createClass({
@@ -59,7 +60,9 @@ const Dashboard = createClass({
       selectJob,
       currentStatuses,
       progressVsAverage,
-      isModalActive
+      isModalActive,
+      filterText,
+      updateFilter
     } = this.props;
     return (
       <div className="root-view">
@@ -88,7 +91,10 @@ const Dashboard = createClass({
                     addJob={addJob}
                     displayJobForm={displayJobForm}
                     hideModal={hideModal}
-                    selectJob={selectJob} />
+                    selectJob={selectJob}
+                    filterText={filterText}
+                    updateFilter={updateFilter}
+                    />
                 </div>
               </div>
               <div className="root-main-tasks">
@@ -146,7 +152,8 @@ const mapStateToProps = (state) => {
       isModalActive: state.modal.modalType,
       goals: state.dashboard.goals.goalTracking,
       progressVsAverage: state.chart.progressVsAverage,
-      currentStatuses: state.chart.currentStatuses
+      currentStatuses: state.chart.currentStatuses,
+      filterText: state.filter.filterText
   };
 };
 
@@ -162,7 +169,8 @@ const mapActionsToProps = {
   selectJob: selectJob,
   getGoals: getGoals,
   getProgressVersusAverage: getProgressVersusAverage,
-  getCurrentStatuses: getCurrentStatuses
+  getCurrentStatuses: getCurrentStatuses,
+  updateFilter: updateFilter
 };
 
 export default connect(mapStateToProps, mapActionsToProps)(Dashboard);
